@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import MenuItem from './MenuItem'
+import axios from 'axios'
 
 class Menu extends Component{
   constructor(props) {
@@ -10,12 +11,37 @@ class Menu extends Component{
     }
   } 
   
+  componentWillMount() {
+    console.log('component will mount')
+  }
+
+  componentDidMount() {
+    axios.post('https://baidu.com')
+    .then((res)=>{console.log('数据获取成功'+JSON.stringify(res))})
+    console.log('component did mounted')
+  }
+
+  shouldComponentUpdate() {
+    console.log('should component update')
+    return true
+  }
+  
+  componentWillUpdate() {
+    console.log('component will update')
+  }
+
+  componentDidUpdate() {
+    console.log('component did update')
+  }
+
   render() {
+    console.log('component is rendering')
     return (
       <Fragment>
         {/* 注释 */}
         <div>
-          <input value={this.state.inputValue} onChange={this.inputChange.bind(this)} />
+          <input value={this.state.inputValue} onChange={this.inputChange.bind(this)}
+            ref={(input)=>{this.input=input}}/>
           <button onClick={this.addList.bind(this)}>增加服务</button>
         </div>
         <ul>
@@ -25,19 +51,17 @@ class Menu extends Component{
 
                 <MenuItem content={item} key={item + index} index={index}
                   deleteItem={this.deleteItem.bind(this)}/>
-
               )
-
-
             })
           }
         </ul>
       </Fragment>
     )
   }
-  inputChange(e) {
+  inputChange() {
     this.setState({
-      inputValue:e.target.value
+      // inputValue:e.target.value
+      inputValue:this.input.value
     })
 
   }
@@ -60,3 +84,8 @@ class Menu extends Component{
 }
  // <li key={index + item}>{item}</li>
 export default Menu
+
+// npm install axios  写入node_modules  不会写入依赖package.json
+// npm install -g axios  安装到全局 prefix里设置到哪儿安装到哪儿
+// npm install -save axios 写入node_modules 写入依赖package.json 生产环境
+// npm install -save-dev axios 开发环境
