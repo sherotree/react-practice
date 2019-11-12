@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { userInfo } from 'os';
 
 // function formatName(user) {
 //   return user.firstName + ' ' + user.lastName;
@@ -18,16 +19,61 @@ import * as serviceWorker from './serviceWorker';
 //   </h1>
 // );
 
-function tick() {
-  const element = (
-    <div>
-      <h1>Hello,World!</h1>
-      <h2>It is {new Date().toLocaleTimeString()}</h2>
-    </div>
-  );
-  ReactDOM.render(element,document.getElementById('root'))
+class Clock extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {date:new Date()}
+  }
+
+  componentDidMount() {
+    this.timerId = setInterval(
+      () => this.tick(), 1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timeId);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello,World!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+      </div>
+    );
+  }
+  
 }
 
-setInterval(tick,1000)
+
+  ReactDOM.render(
+    <Clock />,
+    document.getElementById('root'))
+
+
+
+
+// function Welcome(props) {
+//   return <h1>Hello,{props.name}</h1>
+// };
+
+// function App1() {
+//   return (
+//     <div>
+//       <Welcome name='zhangsan' />
+//       <Welcome name='lisi' />
+//       <Welcome name='wangwu' />
+//     </div>
+//   )
+// };
+
+// ReactDOM.render(<App1 />, document.getElementById('root'));
 
 
