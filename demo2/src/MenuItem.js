@@ -8,21 +8,21 @@ class MenuItem extends Component {
     this.handleClick=this.handleClick.bind(this)
   }
 
-  shouldComponentUpdate(nextProps,nextState) {
-    if (nextProps.content !== this.props.content) {
-      return true
-    }
-    else {
-      return false
-    }
-  }
+  // shouldComponentUpdate(nextProps,nextState) {
+  //   if (nextProps.content !== this.props.content) {
+  //     return true
+  //   }
+  //   else {
+  //     return false
+  //   }
+  // }
 
   //如果组件第一次存在于DOM中，函数不会被执行
   //如果组件存在于DOM，函数才会被执行
   
-  componentWillReceiveProps() {
-    console.log('component will receive props')
-  }
+  // componentWillReceiveProps() {
+  //   console.log('component will receive props')
+  // }
 
   render() { 
     return (  

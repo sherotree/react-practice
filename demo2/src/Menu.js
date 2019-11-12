@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import MenuItem from './MenuItem'
-import axios from 'axios'
+// import axios from 'axios'
+import Boss from './Boss'
 
 class Menu extends Component{
   constructor(props) {
@@ -11,28 +12,28 @@ class Menu extends Component{
     }
   } 
   
-  componentWillMount() {
-    console.log('component will mount')
-  }
+  // componentWillMount() {
+  //   console.log('component will mount')
+  // }
 
-  componentDidMount() {
-    axios.post('https://baidu.com')
-    .then((res)=>{console.log('数据获取成功'+JSON.stringify(res))})
-    console.log('component did mounted')
-  }
+  // componentDidMount() {
+  //   axios.post('https://baidu.com')
+  //   .then((res)=>{console.log('数据获取成功'+JSON.stringify(res))})
+  //   console.log('component did mounted')
+  // }
 
-  shouldComponentUpdate() {
-    console.log('should component update')
-    return true
-  }
+  // shouldComponentUpdate() {
+  //   console.log('should component update')
+  //   return true
+  // }
   
-  componentWillUpdate() {
-    console.log('component will update')
-  }
+  // componentWillUpdate() {
+  //   console.log('component will update')
+  // }
 
-  componentDidUpdate() {
-    console.log('component did update')
-  }
+  // componentDidUpdate() {
+  //   console.log('component did update')
+  // }
 
   render() {
     console.log('component is rendering')
@@ -55,6 +56,7 @@ class Menu extends Component{
             })
           }
         </ul>
+        <Boss />
       </Fragment>
     )
   }
