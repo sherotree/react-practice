@@ -249,14 +249,55 @@ import { userInfo } from 'os';
 
 // 88888888
 
-class NameForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { value: '' }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
+// class NameForm extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = { value: '' }
+//     this.handleChange = this.handleChange.bind(this)
+//     this.handleSubmit = this.handleSubmit.bind(this)
+//   }
 
+//   handleChange(event) {
+//     this.setState({
+//       value:event.target.value
+//     })
+//   }
+
+//   handleSubmit(event) {
+//     alert('提交的名字：' + this.state.value)
+//     event.preventDefault();
+//   }
+
+
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//         <label>
+//           名字：
+//           <input type='text' value={this.state.value} onChange={this.handleChange} />
+//         </label>
+//         <input type='submit' value='提交' />
+//       </form>
+//     )
+//   }
+// }
+
+// ReactDOM.render(
+//   <NameForm />,document.getElementById('root')
+// )
+
+
+// 9999999
+
+class EssayForm extends React.Component {
+  constructor(props) {
+    super(props) 
+    this.state = {
+      value:'撰写一篇关于你喜欢的 React 文章。'
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
   handleChange(event) {
     this.setState({
       value:event.target.value
@@ -264,17 +305,16 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('提交的名字：' + this.state.value)
-    event.preventDefault();
+    alert('提交的文章名字' + this.state.value)
+    event.preventDefault()
   }
-
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          名字：
-          <input type='text' value={this.state.value} onChange={this.handleChange} />
+          文章：
+          <textarea value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type='submit' value='提交' />
       </form>
@@ -283,7 +323,7 @@ class NameForm extends React.Component {
 }
 
 ReactDOM.render(
-  <NameForm />,document.getElementById('root')
+  <EssayForm />,document.getElementById('root')
 )
 
 
