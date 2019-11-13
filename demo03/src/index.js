@@ -289,15 +289,56 @@ import { userInfo } from 'os';
 
 // 9999999
 
-class EssayForm extends React.Component {
+// class EssayForm extends React.Component {
+//   constructor(props) {
+//     super(props) 
+//     this.state = {
+//       value:'撰写一篇关于你喜欢的 React 文章。'
+//     }
+//     this.handleSubmit = this.handleSubmit.bind(this)
+//     this.handleChange = this.handleChange.bind(this)
+//   }
+//   handleChange(event) {
+//     this.setState({
+//       value:event.target.value
+//     })
+//   }
+
+//   handleSubmit(event) {
+//     alert('提交的文章名字' + this.state.value)
+//     event.preventDefault()
+//   }
+
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//         <label>
+//           文章：
+//           <textarea value={this.state.value} onChange={this.handleChange} />
+//         </label>
+//         <input type='submit' value='提交' />
+//       </form>
+//     )
+//   }
+// }
+
+// ReactDOM.render(
+//   <EssayForm />,document.getElementById('root')
+// )
+
+
+// AAAAAAA
+
+class FlavorForm extends React.Component {
   constructor(props) {
-    super(props) 
+    super(props)
     this.state = {
-      value:'撰写一篇关于你喜欢的 React 文章。'
+      value:'apple'
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange=this.handleChange.bind(this)
   }
+
   handleChange(event) {
     this.setState({
       value:event.target.value
@@ -305,7 +346,7 @@ class EssayForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('提交的文章名字' + this.state.value)
+    alert('我最喜欢的口味是： ' + this.state.value)
     event.preventDefault()
   }
 
@@ -313,8 +354,13 @@ class EssayForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          文章：
-          <textarea value={this.state.value} onChange={this.handleChange} />
+          选择你喜欢的风味：
+          <select value={this.state.value} onChange={this.handleChange}>
+            <option value='grape'>葡萄</option>
+            <option value='apple'>苹果</option>
+            <option value='cherry'>樱桃</option>
+            <option value='mango'>芒果</option>
+          </select>
         </label>
         <input type='submit' value='提交' />
       </form>
@@ -323,9 +369,5 @@ class EssayForm extends React.Component {
 }
 
 ReactDOM.render(
-  <EssayForm />,document.getElementById('root')
+  <FlavorForm />,document.getElementById('root')
 )
-
-
-
-
