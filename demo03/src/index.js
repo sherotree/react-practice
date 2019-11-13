@@ -201,48 +201,91 @@ import { userInfo } from 'os';
 //   document.getElementById('root')
 // )
 
-function WarningBanner(props) {
-  if (!props.warn) {
-    return null;
-  }
+// 7777777
+// function WarningBanner(props) {
+//   if (!props.warn) {
+//     return null;
+//   }
 
-    return (
-      <div className='warning'>
-        WARNING!
-      </div>
-    );
-  }
+//     return (
+//       <div className='warning'>
+//         WARNING!
+//       </div>
+//     );
+//   }
 
 
-class Page extends React.Component {
+// class Page extends React.Component {
 
+//   constructor(props) {
+//     super(props)
+//     this.state = { showWarning: true }
+//     this.handleToggleClick=this.handleToggleClick.bind(this)
+//     }
+
+//   handleToggleClick() {
+//     this.setState(state => ({
+//       showWarning:!this.state.showWarning
+//     }))
+//   }
+
+//   render() {
+//     return (
+//       <div>
+//         <WarningBanner warn={this.state.showWarning} />
+//         <button onClick={this.handleToggleClick}>
+//           {this.state.showWarning ? 'HIDE' : 'SHOW'}
+//         </button>
+//       </div>
+//     );
+//   }
+// }
+
+// ReactDOM.render(
+//   <Page />,
+//   document.getElementById('root')
+// )
+
+
+// 88888888
+
+class NameForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { showWarning: true }
-    this.handleToggleClick=this.handleToggleClick.bind(this)
-    }
-
-  handleToggleClick() {
-    this.setState(state => ({
-      showWarning:!this.state.showWarning
-    }))
+    this.state = { value: '' }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  handleChange(event) {
+    this.setState({
+      value:event.target.value
+    })
+  }
+
+  handleSubmit(event) {
+    alert('提交的名字：' + this.state.value)
+    event.preventDefault();
+  }
+
 
   render() {
     return (
-      <div>
-        <WarningBanner warn={this.state.showWarning} />
-        <button onClick={this.handleToggleClick}>
-          {this.state.showWarning ? 'HIDE' : 'SHOW'}
-        </button>
-      </div>
-    );
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          名字：
+          <input type='text' value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type='submit' value='提交' />
+      </form>
+    )
   }
 }
 
 ReactDOM.render(
-  <Page />,
-  document.getElementById('root')
+  <NameForm />,document.getElementById('root')
 )
+
+
 
 
