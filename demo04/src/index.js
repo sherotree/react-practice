@@ -7,10 +7,10 @@ import * as serviceWorker from "./serviceWorker";
 class ProductCategoryRow extends React.Component {
   render() {
     const category = this.props.category;
-    return React.createElement(
-      "tr",
-      null,
-      React.createElement("th", { colSpan: "2" })
+    return (
+      <tr>
+        <th colSpan="2">{category}</th>
+      </tr>
     );
   }
 }
@@ -18,82 +18,133 @@ class ProductCategoryRow extends React.Component {
 class ProductRow extends React.Component {
   render() {
     const product = this.props.product;
-    const name = product.stocked
-      ? product.name
-      : React.createElement("span", { style: { color: "red" } }, product.name);
+    const name = product.stocked ? (
+      product.name
+    ) : (
+      <span style={{ color: "red" }}>{product.name}</span>
+    );
 
-    return React.createElement(
-      "tr",
-      null,
-      React.createElement("td", null, name),
-      React.createElement("td", null, product.price)
+    return (
+      <tr>
+        <td>{name}</td>
+        <td>{product.price}</td>
+      </tr>
     );
   }
 }
 
 class ProductTable extends React.Component {
   render() {
+    const filterText = this.props.filterText;
+    const inStockOnly = this.props.inStockOnly;
     const rows = [];
     let lastCategory = null;
     this.props.products.forEach(product => {
+      if (product.name.indexOf(filterText) === -1) {
+        return;
+      }
+      if (inStockOnly && !product.stocked) {
+        return;
+      }
       if (product.category !== lastCategory) {
         rows.push(
-          React.createElement(ProductCategoryRow, {
-            category: product.category,
-            key: product.category
-          })
+          <ProductCategoryRow
+            category={product.category}
+            key={product.category}
+          />
         );
       }
-      rows.push(
-        React.createElement(ProductRow, {
-          product: product,
-          key: product.name
-        })
-      );
+      rows.push(<ProductRow product={product} key={product.name} />);
       lastCategory = product.category;
     });
-    return React.createElement(
-      "table",
-      null,
-      React.createElement(
-        "thead",
-        null,
-        React.createElement(
-          "tr",
-          null,
-          React.createElement("th", null, "Name"),
-          React.createElement("th", null, "Price")
-        )
-      ),
-      React.createElement("tbody", null, rows)
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
     );
   }
 }
 
 class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+    this.handleInStockChange = this.handleInStockChange.bind(this);
+  }
+
+  handleFilterTextChange(event) {
+    this.props.onFilterTextChange(event.target.value);
+  }
+  handleInStockChange(event) {
+    this.props.onInStockChange(event.target.value);
+  }
+
   render() {
-    return React.createElement(
-      "form",
-      null,
-      React.createElement("input", { type: "text", placeholder: "Search..." }),
-      React.createElement(
-        "p",
-        null,
-        React.createElement("input", { type: "checkbox" }),
-        " ",
-        "Only show products in stock"
-      )
+    return (
+      <form>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={this.props.filterText}
+          onChange={this.handleFilterTextChange}
+        />
+        <p>
+          <input
+            type="checkbox"
+            checked={this.props.inStockOnly}
+            onChange={this.handleInStockChange}
+          />{" "}
+          Only show products in stock
+        </p>
+      </form>
     );
   }
 }
 
 class FilterableProductTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterText: "",
+      inStockOnly: false
+    };
+    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+    this.handleInStockChange = this.handleInStockChange.bind(this);
+  }
+
+  handleFilterTextChange(filterText) {
+    this.setState({
+      filterText: filterText
+    });
+  }
+  handleInStockChange(inStockOnly) {
+    this.setState({
+      inStockOnly: inStockOnly
+    });
+  }
+
   render() {
-    return React.createElement(
-      "div",
-      null,
-      React.createElement(SearchBar, null),
-      React.createElement(ProductTable, { products: this.props.products })
+    return (
+      <div>
+        <SearchBar
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+          onFilterTextChange={this.handleFilterTextChange}
+          onInStockChange={this.handleInStockChange}
+        />
+        <ProductTable
+          products={this.props.products}
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+        />
+      </div>
     );
   }
 }
