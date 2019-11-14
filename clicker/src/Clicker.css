@@ -1,0 +1,42 @@
+.wrapper {
+  margin: 20px auto;
+  width: 300px;
+  border-radius: 20%;
+  line-height: 200px;
+}
+
+.count {
+  background: black;
+  border-radius: 20% 20%;
+  color: white;
+  font-size: 100px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.btn {
+  width: 80px;
+  line-height: 50px;
+  border-radius: 20%;
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.add {
+  background: red;
+}
+
+.decrease {
+  background: blue;
+}
+
+.refresh {
+  background: green;
+}
