@@ -21,22 +21,13 @@
 }
 
 .btn {
-  width: 80px;
-  line-height: 50px;
-  border-radius: 20%;
   color: white;
   text-align: center;
   font-weight: bolder;
 }
 
-.add {
-  background: red;
-}
-
-.decrease {
-  background: blue;
-}
-
-.refresh {
-  background: green;
+img {
+  width: 80px;
+  line-height: 50px;
+  border-radius: 20%;
 }
