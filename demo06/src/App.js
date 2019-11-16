@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './App.css'
 import { Step1 } from './components/Step1'
 import { Step2 } from './components/Step2'
+import { Step3 } from './components/Step3'
 
 function App() {
   const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -36,7 +37,7 @@ function App() {
         <Step1 title="我是第一个组件" plans={['早起', '吃早餐', '去玩喽']} />
       )}
       {selectedIndex === 2 && <Step2 />}
-      {selectedIndex === 3 && <div>ToDo:这是我的第三个组件</div>}
+      {selectedIndex === 3 && <Step3 />}
       {selectedIndex === 4 && <div>ToDo:这是我的第四个组件</div>}
       {selectedIndex === 5 && <div>ToDo:这是我的第五个组件</div>}
       {selectedIndex === 6 && <div>ToDo:这是我的第六个组件</div>}
