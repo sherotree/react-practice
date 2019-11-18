@@ -8,6 +8,7 @@ import { Step5 } from './components/Step5'
 import { Step6 } from './components/Step6'
 import { Step7 } from './components/Step7'
 import { Step8 } from './components/Step8'
+import { Step9 } from './components/Step9'
 
 function App() {
   const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -48,7 +49,7 @@ function App() {
       {selectedIndex === 6 && <Step6 />}
       {selectedIndex === 7 && <Step7 />}
       {selectedIndex === 8 && <Step8 />}
-      {selectedIndex === 9 && <div>ToDo:这是我的第九个组件</div>}
+      {selectedIndex === 9 && <Step9 />}
       {selectedIndex === 10 && <div>ToDo:这是我的第十个组件</div>}
       {selectedIndex === 11 && <div>ToDo:这是我的第十一个组件</div>}
       {selectedIndex === 12 && <div>ToDo:这是我的第十二组件</div>}
