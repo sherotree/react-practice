@@ -16,6 +16,7 @@ import { Step13 } from './components/Step13'
 import { Step14 } from './components/Step14'
 import { Step15 } from './components/Step15'
 import { Step16 } from './components/Step16'
+import { Step17 } from './components/Step17/index'
 
 function App() {
   const list = [
@@ -35,6 +36,7 @@ function App() {
     14,
     15,
     16,
+    17,
     18,
     19,
     20,
@@ -84,6 +86,7 @@ function App() {
       {selectedIndex === 14 && <Step14 />}
       {selectedIndex === 15 && <Step15 />}
       {selectedIndex === 16 && <Step16 />}
+      {selectedIndex === 17 && <Step17 />}
     </div>
   )
 }
