@@ -12,9 +12,30 @@ import { Step9 } from './components/Step9'
 import { Step10 } from './components/Step10'
 import { Step11 } from './components/Step11'
 import { Step12 } from './components/Step12'
+import { Step13 } from './components/Step13'
 
 function App() {
-  const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const list = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19,
+    20,
+  ]
   const [selectedIndex, setSelectedIndex] = useState(1)
 
   return (
@@ -56,6 +77,7 @@ function App() {
       {selectedIndex === 10 && <Step10 />}
       {selectedIndex === 11 && <Step11 />}
       {selectedIndex === 12 && <Step12 />}
+      {selectedIndex === 13 && <Step13 />}
     </div>
   )
 }
