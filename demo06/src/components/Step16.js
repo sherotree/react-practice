@@ -15,7 +15,7 @@ export function Step16() {
       {
         value: text,
         isDone: false,
-        theme,
+        theme: theme,
       },
     ])
     setText('')
